@@ -66,3 +66,11 @@ Click to place unlimited planet-themed stickers:
 
 ### Canvas
 - Press `Clear Canvas` to remove all your drawings (stickers and shapes)
+
+
+## References 
+Stackoverflow : https://stackoverflow.com/questions/54580600/how-to-rotate-individual-shapes-in-webgl 
+                https://stackoverflow.com/questions/59539788/stencil-buffer-in-webgl
+Developer : https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Animating_objects_with_WebGL
+W3Schools : https://w3schools.tech/tutorial/webgl/webgl_rotation
+ChatGPT : to Debug as well we help pushing to Git
