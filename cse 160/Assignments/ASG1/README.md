@@ -34,7 +34,7 @@ Click to place unlimited planet-themed stickers:
 - 🌍 **Earth** – Blue base with green triangles as land
 - 👽 **Alien** – Green head with black eyes
 
-### Smart Drawing Logic
+### Drawing Logic
 - Stickers can be placed at any location on the black canvas
 - Regular shapes (circle/triangle) can still be drawn normally while the animations run in the background 
 - Animations do not block other drawing actions
