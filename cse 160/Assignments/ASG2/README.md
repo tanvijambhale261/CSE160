@@ -1,5 +1,4 @@
-# Capybara Blocky Animal - CSE160 Assignment 2
-
+# CSE 160 : ASG2 Capybara Blocky Animal
 ## Instructions
 
 - **Rotation and Angle Control**
