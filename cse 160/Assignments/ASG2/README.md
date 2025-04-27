@@ -25,3 +25,10 @@
 
 - **Non-Cube Primitives**
   - The **eyes** and **nose** are drawn using **circles** instead of cubes.
+ 
+
+
+- **Resources**
+  - Professor's Youtube Videos
+  - StackOverflow
+  - ChatGPT - debugging
