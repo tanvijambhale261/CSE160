@@ -9,7 +9,7 @@ and complete the mission duirng day and night time!
 ## Features
 
 - Fully generated 32x32 world
-- Multiple textures for ground, walls, and sky [day and night]
+- Multiple textures for ground, Callie, walls, and sky [day and night]
 - Cow character placed randomly in the world
 - Automatic day-night cycle every 15 seconds
 - First-person camera with:
