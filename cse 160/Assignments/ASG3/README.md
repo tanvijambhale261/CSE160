@@ -16,7 +16,7 @@ and complete the mission duirng day and night time!
   - `W` [forward], `A` [left], `S` [backward], `D` [right] for movement
   - `Q` [turn left] and `E` [turn right] to rotate
   - Mouse drag to rotate view
-- Add or remove blocks using:
+- Add or remove blocks using: there is a certain angle to delete and remove blocks 
   - `Spacebar` – Add block
   - `X` – Remove block
 - Immersive environmental design
