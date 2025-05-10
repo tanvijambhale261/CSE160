@@ -13,7 +13,7 @@ and complete the mission duirng day and night time!
 - Cow character placed randomly in the world
 - Automatic day-night cycle every 15 seconds
 - First-person camera with:
-  - `W`v[forward], `A` [left], `S` [backward], `D` [right] for movement
+  - `W` [forward], `A` [left], `S` [backward], `D` [right] for movement
   - `Q` [turn left] and `E` [turn right] to rotate
   - Mouse drag to rotate view
 - Add or remove blocks using:
@@ -30,3 +30,9 @@ and complete the mission duirng day and night time!
    python -m http.server
 2. Open : http://localhost:8000/World.html
 3. Test out the game! 
+
+## Resources 
+- Professor's Youtube Links : https://www.youtube.com/watch?v=EBO9gk2feVY&list=PLbyTU_tFIkcOs7XVopOy5Oti-HGiIZx0J
+- TA Youtube Links : https://www.youtube.com/playlist?list=PLbyTU_tFIkcMK5l9lUnM0O3I3wmko8lPa
+- ChatGPT - debugging
+- Time Uniform : https://stackoverflow.com/questions/45131804/how-to-set-a-time-uniform-in-webgl
