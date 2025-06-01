@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Tanvi Jambhale : Lighting</title>
+
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      background-color: #fff8dc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    #webgl {
+      border: 2px solid #ffffff;
+      background-color: #000;
+    }
+
+    .slider-box {
+      background-color: #794c36;
+      border: 2px solid #794c36;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .slider-box h3 {
+      font-size: 18px;
+      color: #ffffff;
+      margin: 0 0 10px 0;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+      background: #a17d5a;
+      height: 6px;
+      border-radius: 3px;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      background: #8b4515;
+      border: none;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      margin-top: -5px;
+      cursor: pointer;
+    }
+
+    input[type=range] {
+      accent-color: #f6f6f6;
+      width: 100%;
+    }
+
+    .control-button {
+    background-color: #6a402b;
+    color: #fff8dc;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    margin: 5px 0;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .control-button:hover {
+    background-color: #5b3624;
+  }
+
+
+
+
+  </style>
+</head>
+
+<body onload="main()">
+  <canvas id="webgl" width="600" height="600">
+    Please use a browser that supports "canvas"
+  </canvas>
+
+  <!-- Story / Instructions -->
+  <div id="instructions" style="margin-top: 25px; padding: 20px; width: 700px; background-color: #fff0c1; border: 2px solid #dcb35c; border-radius: 12px; text-align: center; font-family: 'Arial', sans-serif;">
+    <h3 style="margin: 0; color: #5c3b0b;">Callie's Adventure: Find the Lost Cow!</h3>
+    <p style="margin-top: 10px; font-size: 16px; color: #3e2b1c;">
+      As the sun rises and sets, Callie has gone missing in the blocky wilds!<br>
+      Navigate your world by day and night to track her down.<br>
+    </p>
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 30px;">
+  <!-- Camera Angle Slider -->
+  <div style="background-color: #6a402b; border-radius: 10px; padding: 15px 25px;">
+    <p style="color: #fff8dc; font-weight: bold; text-align: center;">Camera Angle</p>
+    <input type="range" min="-90" max="90" value="0" class="slider" id="angleSlide" style="width: 200px;">
+  </div>
+
+  <!-- Move Around Controls -->
+  <div style="background-color: #6a402b; color: #fff8dc; border-radius: 10px; padding: 20px; width: 220px; text-align: center;">
+    <h4 style="margin-top: 0;">Move Around Your World!</h4>
+    <p>W --- move forward</p>
+    <p>A --- move left</p>
+    <p>S --- move backward</p>
+    <p>D --- move right</p>
+    <p>Q --- turn left</p>
+    <p>E --- turn right</p>
+  </div>
+
+
+  
+<div style="display: flex; flex-direction: column; align-items: center; background-color: #6a402b; border-radius: 10px; padding: 10px; margin-top: 10px;">
+  <button class="control-button" id="lightOnButton">Light: ON</button>
+  <button class="control-button" id="lightOffButton">Light: OFF</button>
+  <button class="control-button" id="normOn">Normal ON</button>
+  <button class="control-button" id="normOff">Normal OFF</button>
+</div>
+
+<div style="display: flex; flex-direction: column; align-items: center; background-color: #6a402b; border-radius: 10px; padding: 10px; margin-top: 10px;">
+  <button class="control-button" id="spotOn">Spotlight ON</button>
+  <button class="control-button" id="spotOff">Spotlight OFF</button>
+</div>
+
+
+<div style="margin-top: 20px; background-color: #6a402b; color: #fff8dc; padding: 15px 20px; border-radius: 10px; text-align: center; width: 220px;">
+  <h4 style="margin: 0;">Light Color</h4>
+  <label for="lightRSlide">Red</label>
+  <input type="range" id="lightRSlide" min="0" max="1" step="0.01" value="1"><br>
+  <label for="lightGSlide">Green</label>
+  <input type="range" id="lightGSlide" min="0" max="1" step="0.01" value="1"><br>
+  <label for="lightBSlide">Blue</label>
+  <input type="range" id="lightBSlide" min="0" max="1" step="0.01" value="1">
+</div>
+
+
+
+  <!-- Mouse Movement -->
+  <div style="background-color: #6a402b; color: #fff8dc; border-radius: 10px; padding: 15px 20px; width: 220px; text-align: center; margin-top: 15px;">
+    <h4 style="margin-top: 0;">Look Around!</h4>
+    <p>click and drag your mouse</p>
+    <p>to rotate the camera!</p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 20px;">
+    <label style="margin: 5px 0;">Light X: <input type="range" min="-5" max="5" value="0" step="0.1" id="lightXSlide" class="slider"></label>
+    <label style="margin: 5px 0;">Light Y: <input type="range" min="-5" max="5" value="1" step="0.1" id="lightYSlide" class="slider"></label>
+    <label style="margin: 5px 0;">Light Z: <input type="range" min="-5" max="5" value="0" step="0.1" id="lightZSlide" class="slider"></label>
+  </div>
+
+
+  <p>ms: <span id="fps">0</span> fps: <span id="frametime">0</span></p>
+
+  <!-- Script Imports -->
+  <script src="./lib/webgl-utils.js"></script>
+  <script src="./lib/webgl-debug.js"></script>
+  <script src="./lib/cuon-utils.js"></script>
+  <script src="./lib/cuon-matrix.js"></script>
+
+  <script src="./lib/OBJLoader.js"></script>
+
+  <script src="Model.js"></script>
+
+  <script src="Point.js"></script>
+  <script src="Triangle.js"></script>
+  <script src="Circle.js"></script>
+  <script src="Camera.js"></script>
+  <script src="Cube.js"></script>
+  <script src="World.js"></script>
+  <script src="Sphere.js"></script>
+</body>
+</html>

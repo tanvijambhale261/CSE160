@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Capybara!</title>
+
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .control-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    .control {
+      background-color: #e5f5e0;
+      border: 2px solid #cce0cc;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px;
+      width: 250px;
+    }
+
+    .control h3 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #5b7553;
+    }
+
+    .leg-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .leg-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .leg-box {
+      background-color: #e5f5e0;
+      border: 2px solid #cce0cc;
+      border-radius: 10px;
+      padding: 15px;
+      width: 250px;
+    }
+
+    .leg-box h3 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #5b7553;
+    }
+
+    button {
+      margin: 2px;
+      padding: 5px 8px;
+      background-color: #d9f2d9;
+      border: 1px solid #a8d0a8;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #bde0bd;
+    }
+
+    /* Style the slider track (the bar) */
+    input[type=range]::-webkit-slider-runnable-track {
+      background: #d2b48c; /* Light brown track */
+      height: 6px;
+      border-radius: 3px;
+    }
+
+    /* Style the slider thumb (the circle) */
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      background: #8b4515; /* Darker brown thumb */
+      border: none;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      margin-top: -5px; /* Center the thumb */
+      cursor: pointer;
+    }
+
+    /* Firefox slider styling */
+    input[type=range] {
+      accent-color: #8b4515; /* Thumb color for Firefox */
+    }
+
+  </style>
+
+</head>
+
+<body onload="main()">
+  <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+  </canvas>
+
+  <p id="numdot">XXX</p>
+
+  <div class="control-wrapper">
+    <div class="side-controls">
+      <!-- Angle controller -->
+      <div class="control">
+        <h3>Angle</h3>
+        <input type="range" min="0" max="360" value="5" class="slider" id="angleSlide">
+      </div>
+    
+      <div class="control">
+        <h3>Main Animation</h3>
+        <p>Watch Capybara Walk: 
+          <button id="mainAnimationOnButton">ON</button>
+          <button id="mainAnimationOffButton">OFF</button>
+        </p>
+      </div>
+    </div>
+
+    <!-- Leg controls -->
+    <div class="leg-controls">
+
+      <div class="leg-row">
+        <!-- Back Left -->
+        <div class="leg-box">
+          <h3>Back Left</h3>
+          <p>Calf: <input type="range" min="-45" max="45" value="0" id="backLeftCalfSlider"></p>
+          <p>Foot: <input type="range" min="-45" max="45" value="0" id="backLeftFootSlide"></p>
+          <p>Calf Animation: 
+            <button id="animationBackLeftCalfOnButton">ON</button>
+            <button id="animationBackLeftCalfOffButton">OFF</button>
+          </p>
+          <p>Foot Animation:
+            <button id="animationBackLeftFootOnButton">ON</button>
+            <button id="animationBackLeftFootOffButton">OFF</button>
+          </p>
+        </div>
+
+        <!-- Back Right -->
+        <div class="leg-box">
+          <h3>Back Right</h3>
+          <p>Calf: <input type="range" min="-45" max="45" value="0" id="backRightCalfSlider"></p>
+          <p>Foot: <input type="range" min="-45" max="45" value="0" id="backRightFootSlide"></p>
+          <p>Calf Animation: 
+            <button id="animationBackRightCalfOnButton">ON</button>
+            <button id="animationBackRightCalfOffButton">OFF</button>
+          </p>
+          <p>Foot Animation:
+            <button id="animationBackRightFootOnButton">ON</button>
+            <button id="animationBackRightFootOffButton">OFF</button>
+          </p>
+        </div>
+      </div>
+
+      <div class="leg-row">
+        <!-- Front Left -->
+        <div class="leg-box">
+          <h3>Front Left</h3>
+          <p>Calf: <input type="range" min="-45" max="45" value="0" id="frontLeftCalfSlider"></p>
+          <p>Foot: <input type="range" min="-45" max="45" value="0" id="frontLeftFootSlider"></p>
+          <p>Calf Animation: 
+            <button id="animationFrontLeftCalfOnButton">ON</button>
+            <button id="animationFrontLeftCalfOffButton">OFF</button>
+          </p>
+          <p>Foot Animation:
+            <button id="animationFrontLeftFootOnButton">ON</button>
+            <button id="animationFrontLeftFootOffButton">OFF</button>
+          </p>
+        </div>
+
+        <!-- Front Right -->
+        <div class="leg-box">
+          <h3>Front Right</h3>
+          <p>Calf: <input type="range" min="-45" max="45" value="0" id="frontRightCalfSlider"></p>
+          <p>Foot: <input type="range" min="-45" max="45" value="0" id="frontRightFootSlider"></p>
+          <p>Calf Animation: 
+            <button id="animationFrontRightCalfOnButton">ON</button>
+            <button id="animationFrontRightCalfOffButton">OFF</button>
+          </p>
+          <p>Foot Animation:
+            <button id="animationFrontRightFootOnButton">ON</button>
+            <button id="animationFrontRightFootOffButton">OFF</button>
+          </p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Script Imports -->
+  <script src="./lib/webgl-utils.js"></script>
+  <script src="./lib/webgl-debug.js"></script>
+  <script src="./lib/cuon-utils.js"></script>
+  <script src="./lib/cuon-matrix.js"></script>
+  <script src="Triangle.js"></script>
+  <script src="Circle.js"></script>
+  <script src="Point.js"></script>
+  <script src="Cube.js"></script>
+  <script src="BlockyAnimal.js"></script>
+</body>
+</html>
