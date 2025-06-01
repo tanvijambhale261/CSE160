@@ -40,11 +40,10 @@ textures, sound, and movement controls to build a relaxing **spring garden world
 
 ## WOW Factor
 
-**Petal Animation**  
+**Petal Animation & Footsteps**  
 - Delicate pink petals float down from the sky with randomized offsets and speeds,
   creating a tranquil and immersive garden atmosphere. The animation mimics gentle
   drifting motion using sine waves and gradual descent.
-**Footstep sounds**  
 - Each time the user moves using WASD keys, a soft footstep sound is triggered,
   enhancing the feeling of presence and grounding the player within the environment.
 
